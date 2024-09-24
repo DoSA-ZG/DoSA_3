@@ -1,0 +1,76 @@
+﻿@model Plot
+
+@{
+  ViewBag.Title = "Add new plot";
+}
+
+<h2>Add new plot</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="IdPerson" class="form-label"></label>
+        <select class="form-select" asp-for="IdPerson" asp-items="ViewBag.PersonName">
+            <option disabled selected value="">Choose a person</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdPerson" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdCrop" class="form-label"></label>
+        <select class="form-select" asp-for="IdCrop" asp-items="ViewBag.CropName">
+            <option disabled selected value="">Choose a crop</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdCrop" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CommonName" class="form-label"></label>
+        <input asp-for="CommonName" class="form-control" />
+        <div class="form-text"><span asp-validation-for="CommonName" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdSoilQuality" class="form-label"></label>
+        <select class="form-select" asp-for="IdSoilQuality" asp-items="ViewBag.soilQname">
+            <option disabled selected value="">Choose a soil quality</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdSoilQuality" class="text-danger"></span></div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="IdSoilCategory" class="form-label"></label>
+        <select class="form-select" asp-for="IdSoilCategory" asp-items="ViewBag.soilCname">
+            <option disabled selected value="">Choose a soil category</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdSoilCategory" class="text-danger"></span></div>
+    </div>
+    
+    <div class="mb-3">
+        <label asp-for="IdInfrastructure" class="form-label"></label>
+        <select class="form-select" asp-for="IdInfrastructure" asp-items="ViewBag.infName">
+            <option disabled selected value="">Choose a soil category</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdInfrastructure" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Size" class="form-label"></label>
+        <input asp-for="Size" class="form-control" />
+        <div class="form-text"><span asp-validation-for="Size" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Gpslocation" class="form-label"></label>
+        <input asp-for="Gpslocation" class="form-control" />
+        <div class="form-text"><span asp-validation-for="Gpslocation" class="text-danger"></span></div>
+    </div>
+    
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Add</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+  </div>
+  <div asp-validation-summary="All"></div>
+</form>
+
+@section scripts {
+  <partial name="IncludeValidation" />
+}

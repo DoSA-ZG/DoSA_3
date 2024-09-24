@@ -1,0 +1,80 @@
+﻿@model Harvest2ViewModel
+@{
+    ViewBag.Title = "Change harvest";
+    var pageTitle = "Edit Harvest #" + Model.IdHarvest; // Crear el título dinámicamente
+}
+
+<div class="container">
+    <h2>@pageTitle</h2>
+    <hr />
+    <form method="post" asp-action="Edit2"
+          asp-route-page="@ViewBag.Page"
+          asp-route-sort="@ViewBag.Sort"
+          asp-route-ascending="@ViewBag.Ascending">
+        <input type="hidden" asp-for="IdHarvest" />
+        <div asp-validation-summary="All" class="form-group row"></div>
+
+        <div class="form-group row">
+            <label asp-for="Quantity" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <input asp-for="Quantity" class="form-control" />
+            </div>
+
+            <label asp-for="FromDate" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <input asp-for="FromDate" class="form-control datum" />
+            </div>
+
+            <label asp-for="ToDate" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <input asp-for="ToDate" class="form-control datum" />
+            </div>
+
+            <label asp-for="IdPerson" class="col-sm-1 col-form-label"></label>
+            <div class="col-sm-2">
+                <select class="form-select" asp-for="IdPerson">
+                    @foreach (var person in ViewBag.PersonName)
+                    {
+                        <option value="@person.Text" selected="@(person.Text == Model.NamePerson)">
+                            @person.Text
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div>
+                <partial name="ItemsH" model="Model.ItemsH" />
+            </div>
+
+            <div>
+                <button id="save" type="submit" class="btn btn-sm btn-success save" title="Save">Save</button>
+                <a class="btn btn-sm btn-primary update"
+                   asp-action="Edit2"
+                   asp-route-id="@Model.IdHarvest"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Update">Update</a>
+                <a class="btn btn-sm btn-danger cancel"
+                   asp-action="Index"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Cancel">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<partial name="NewItemTemplate" />
+
+@section styles {
+    <link rel="stylesheet" href="~/lib/jqueryui/themes/base/jquery-ui.css" />
+}
+
+@section scripts {
+    <partial name="IncludeValidation" />
+    <script src="~/lib/jqueryui/jquery-ui.js"></script>
+    <script src="~/js/autocomplete.js" asp-append-version="true"></script>
+    <script src="~/js/documents.js" asp-append-version="true"></script>
+}

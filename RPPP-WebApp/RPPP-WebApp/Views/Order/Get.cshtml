@@ -1,0 +1,26 @@
+﻿@model Order2ViewModel
+
+<tr hx-target="this" hx-swap="outerHTML">
+    <td class="text-left">@Model.IdOrder</td>
+    <td class="text-left">@Model.IdHarvest</td>
+    <td class="text-left">@Model.NamePerson</td>
+    <td class="text-left">@Model.Quantity</td>
+    <td class="text-left">@Model.Price</td>
+    <td class="text-left">@Model.DateOfOrder</td>
+
+
+    <td>
+        <a class="btn btn-sm btn-success"
+           hx-get="@Url.Action(nameof(OrderController.Edit), new { id = Model.IdOrder })"
+           title="Edit">Edit</a>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-danger"
+                hx-confirm="Delete Order?"
+                hx-delete="@Url.Action(nameof(OrderController.Delete), new { id = Model.IdOrder })"
+                title="Delete">
+            Delete
+        </button>
+    </td>
+</tr>
+  

@@ -1,0 +1,44 @@
+﻿@model Order
+
+
+<tr hx-target="this" hx-swap="outerHTML">
+    <td class="text-start">
+        @Model.IdOrder
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdHarvest" asp-items="ViewBag.HarvestNumber">
+        </select>
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdPerson" asp-items="ViewBag.PersonName">
+        </select>
+    </td>
+    <td class="text-start">
+        <input asp-for="Quantity" class="form-control" />
+    </td>
+    <td class="text-start">
+        <input asp-for="Price" class="form-control" />
+    </td>
+    <td class="text-start">
+        <input asp-for="DateOfOrder" class="form-control" />
+    </td>
+    
+    <td>
+        <input type="hidden" asp-for="IdOrder" />
+        <button hx-include="closest tr"
+                hx-post="@Url.Action(nameof(OrderController.Edit))"
+                class="btn btn-sm btn-primary" title="Save">
+            <i class="fas fa-save"></i>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-sm cancel"
+                hx-get="@Url.Action(nameof(OrderController.Get), new { id = Model.IdOrder })"
+                title="Cancel">
+            <i class="fas fa-undo-alt"></i>
+        </button>
+    </td>
+    <td>
+        <div asp-validation-summary="All"></div>
+    </td>
+</tr>

@@ -1,0 +1,42 @@
+﻿@model Tasks
+
+@{
+    ViewBag.Title = "Add new task";
+}
+
+<h2>Add new task</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="Task1" class="form-label"></label>
+        <input asp-for="Task1" class="form-control" />
+        <div class="form-text"><span asp-validation-for="Task1" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdTaskStatus" class="form-label"></label>
+        <select class="form-select" asp-for="IdTaskStatus" asp-items="ViewBag.StatusTaskName">
+            <option disabled selected value="">Choose a task status</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdTask" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdPerson" class="form-label"></label>
+        <select class="form-select" asp-for="IdPerson" asp-items="ViewBag.PersonName">
+            <option disabled selected value="">Choose a person</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdPerson" class="text-danger"></span></div>
+    </div>
+
+    <div class="text-center">
+        <button class="btn btn-primary" type="submit">Add</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </div>
+    <div asp-validation-summary="All"></div>
+</form>
+
+@section scripts {
+    <partial name="IncludeValidation"   />
+}

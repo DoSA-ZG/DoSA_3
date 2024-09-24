@@ -1,0 +1,33 @@
+﻿@model Harvest2ViewModel
+
+<tr hx-target="this" hx-swap="outerHTML">
+  <td class="text-left">@Model.IdHarvest</td>
+  <td class="text-left">@Model.IdCrop</td>
+  <td class="text-left">@Model.Quantity</td>
+  <td class="text-left">@Model.FromDate</td>
+    <td class="text-left">@Model.ToDate</td>
+    <td class="text-left">@Model.NamePerson</td>
+
+
+    <td>
+        <a class="btn btn-sm btn-primary"
+           asp-action="Show"
+           asp-route-id="@Model.IdHarvest">
+            Details
+        </a>
+    </td>
+    <td>
+        <a class="btn btn-sm btn-success"
+           hx-get="@Url.Action(nameof(HarvestController.Edit), new { id = Model.IdHarvest })"
+           title="Edit">Edit</a>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-danger"
+                hx-confirm="Delete Harvest?"
+                hx-delete="@Url.Action(nameof(HarvestController.Delete), new { id = Model.IdHarvest })"
+                title="Delete">
+            Delete
+        </button>
+    </td>
+</tr>
+  

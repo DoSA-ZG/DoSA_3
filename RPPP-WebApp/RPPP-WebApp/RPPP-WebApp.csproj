@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>RPPP_WebApp</RootNamespace>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <UserSecretsId>RPPP</UserSecretsId>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Remove="Controllers\AutoCompleteController.cs" />
+  </ItemGroup>
+
+  
+ 
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.23" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.23">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.14">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.4" />
+    <PackageReference Include="PdfRpt.Core" Version="1.5.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ModelsPartial\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Controllers\AutoCompleteController.cs" />
+    <None Include="Controllers\HarvestController.cs" />
+    <None Include="Controllers\OrderController.cs" />
+    <None Include="Controllers\ViewLogController.cs" />
+    <!--<None Include="Extensions\ExcelCreator.cs" />-->
+    <None Include="Extensions\ExceptionExtensions.cs" />
+    <None Include="ViewModels\Harvest2ViewModel.cs" />
+    <None Include="ViewModels\HarvestViewModel.cs" />
+    <None Include="ViewModels\Order2ViewModel.cs" />
+    <None Include="ViewModels\OrderViewModel.cs" />
+    <None Include="wwwroot\media\home_banner.jpg" />
+  </ItemGroup>
+
+</Project>

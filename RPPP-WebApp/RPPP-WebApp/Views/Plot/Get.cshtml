@@ -1,0 +1,30 @@
+﻿@model Plot2ViewModel
+
+<tr hx-target="this" hx-swap="outerHTML">
+    <td class="text-left">@Model.IdPlot</td>
+    <td class="text-left">@Model.NamePerson</td>
+    <td class="text-left">@Model.IdCrop</td>
+    <td class="text-left">@Model.CommonName</td>
+    <td class="text-left">@Model.NameSoilQuality</td>
+    <td class="text-left">@Model.NameSoilCategory</td>
+    <td class="text-left">@Model.NameInfrastructure</td>
+    <td class="text-left">@Model.Size</td>
+    <td class="text-left">@Model.Gpslocation</td>
+    
+
+
+    <td>
+        <a class="btn btn-sm btn-success"
+           hx-get="@Url.Action(nameof(PlotController.Edit), new { id = Model.IdPlot })"
+           title="Edit">Edit</a>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-danger"
+                hx-confirm="Delete Plot?"
+                hx-delete="@Url.Action(nameof(PlotController.Delete), new { id = Model.IdPlot })"
+                title="Delete">
+            Delete
+        </button>
+    </td>
+</tr>
+  

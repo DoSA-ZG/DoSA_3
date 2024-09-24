@@ -1,0 +1,42 @@
+﻿@model Workers
+
+@{
+  ViewBag.Title = "Add new worker";
+}
+
+<h2>Add new worker</h2>
+
+<form asp-action="Create" method="post">
+
+    <div class="mb-3">
+        <label asp-for="IdPerson" class="form-label"></label>
+        <select class="form-select" asp-for="IdPerson" asp-items="ViewBag.PersonName">
+            <option disabled selected value="">Choose a person</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdPerson" class="text-danger"></span></div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="IdWorkerType" class="form-label"></label>
+        <select class="form-select" asp-for="IdWorkerType" asp-items="ViewBag.WorkerTy">
+            <option disabled selected value="">Choose a type of worker</option>
+        </select>
+        <div class="form-text"><span asp-validation-for="IdWorkerType" class="text-danger"></span></div>
+    </div>
+
+  <div class="mb-3">
+    <label asp-for="Salary" class="form-label"></label>
+        <input asp-for="Salary" class="form-control" />
+        <div class="form-text"><span asp-validation-for="Salary" class="text-danger"></span></div>
+  </div>
+ 
+  <div class="text-center">
+    <button class="btn btn-primary" type="submit">Add</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+  </div>
+  <div asp-validation-summary="All"></div>
+</form>
+
+@section scripts {
+  <partial name="IncludeValidation" />
+}

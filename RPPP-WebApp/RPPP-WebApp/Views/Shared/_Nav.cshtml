@@ -1,0 +1,102 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" asp-action="Index" asp-controller="Home">CROPMATE - Group 14</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" asp-action="Index" asp-controller="Home">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Student 1
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                            @(ViewBag.Controller == "Harvest" ? "active": "")"
+                               asp-action="Index" asp-controller="Harvest">
+                                Harvest (CTD)
+                            </a>
+                        </li>
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                            @(ViewBag.Controller == "Order" ? "active": "")"
+                               asp-action="Index" asp-controller="Order">
+                                Order (STD)
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Student 2
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                @(ViewBag.Controller == "Worker" ? "active": "")"
+                               asp-action="Index" asp-controller="Worker">
+                                Workers (CTD)
+                            </a>
+                        </li>
+
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                @(ViewBag.Controller == "Task" ? "active": "")"
+                               asp-action="Index" asp-controller="Task">
+                                Task (STD)
+                            </a>
+                        </li>
+                        @*<li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#">Showcase 3</a></li*@
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Student 3
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                @(ViewBag.Controller == "Crop" ? "active": "")"
+                               asp-action="Index" asp-controller="Crop">
+                                Crop (CTD)
+                            </a>
+                        </li>
+
+
+                        <li class="dropdown-item">
+                            <a class="nav-link
+                @(ViewBag.Controller == "Plot" ? "active": "")"
+                               asp-action="Index" asp-controller="Plot">
+                                Plot (STD)
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+             
+                <li class="nav-item">
+                    <a class="nav-link
+                        @(ViewBag.Controller == "ViewLog" ? "active": "")"
+                       asp-action="Index" asp-controller="ViewLog">
+                        Log viewer
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Order2ViewModel>
+
+<table class="table table-striped" id="table-items">
+    <thead>
+        <tr>
+            @{
+                string[] headers = { "ID Order", "Customer", "Quantity", "Price", "Date of Order" };
+                for (int i = 0; i < headers.Length; i++)
+                {
+                    <th class="text-center">
+                        @headers[i]                        
+                    </th>
+                }
+            }
+            <th colspan="2"></th>
+        </tr>
+    </thead>
+    <tbody>      
+        @foreach(var item in Model)
+        {           
+            <tr>
+
+                <td class="text-center">
+                    <span readonly>@item.IdOrder</span>
+                </td>
+
+                <td class="text-center">
+                    <select name="@item.NamePerson" class="form-select">
+                        @foreach (var person in ViewBag.PersonName)
+                        {
+                            <option value="@person.Text"
+                                    selected="@(person.Text == item.NamePerson)">
+                                @person.Text
+                            </option>
+                        }
+                    </select>
+                </td>
+
+                <td class="text-center">
+                    <input name="@item.Quantity" class="form-control" value="@item.Quantity" />
+                </td>
+                <td class="text-center">
+                    <input name="@item.Price" class="form-control" value="@item.Price" />
+                </td>
+                <td class="text-center">
+                    <input name="@item.DateOfOrder" class="form-control" value="@item.DateOfOrder" />
+                </td>
+                
+                <td>
+                    <button class="btn btn-sm btn-danger deleterow" title="Remove"><i class="fa fa-minus"></i></button>
+                </td>               
+            </tr>
+        }        
+       
+    </tbody>
+</table>
+

@@ -1,0 +1,56 @@
+﻿@model Plot
+
+
+<tr hx-target="this" hx-swap="outerHTML">
+    <td class="text-start">
+        @Model.IdPlot
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdPerson" asp-items="ViewBag.PersonName">
+        </select>
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdCrop" asp-items="ViewBag.CropName">
+        </select>
+    </td>
+    <td class="text-start">
+        <input asp-for="CommonName" class="form-control" />
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdSoilQuality" asp-items="ViewBag.SoilQName">
+        </select>
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdSoilCategory" asp-items="ViewBag.SoilCName">
+        </select>
+    </td>
+    <td class="text-start">
+        <select class="form-select" asp-for="IdInfrastructure" asp-items="ViewBag.InfName">
+        </select>
+    </td>
+    <td class="text-start">
+        <input asp-for="Size" class="form-control" />
+    </td>
+    <td class="text-start">
+        <input asp-for="Gpslocation" class="form-control" />
+    </td>
+
+    <td>
+        <input type="hidden" asp-for="IdPlot" />
+        <button hx-include="closest tr"
+                hx-post="@Url.Action(nameof(PlotController.Edit))"
+                class="btn btn-sm btn-primary" title="Save">
+            <i class="fas fa-save"></i>
+        </button>
+    </td>
+    <td>
+        <button class="btn btn-sm cancel"
+                hx-get="@Url.Action(nameof(PlotController.Get), new { id = Model.IdPlot })"
+                title="Cancel">
+            <i class="fas fa-undo-alt"></i>
+        </button>
+    </td>
+    <td>
+        <div asp-validation-summary="All"></div>
+    </td>
+</tr>

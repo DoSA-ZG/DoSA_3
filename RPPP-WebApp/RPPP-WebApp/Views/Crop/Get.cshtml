@@ -1,0 +1,35 @@
+﻿@model Crop2ViewModel
+
+<tr hx-target="this" hx-swap="outerHTML">
+  <td class="text-left">@Model.IdCrop</td>
+  <td class="text-left">@Model.NameSpecies</td>
+  <td class="text-left">@Model.NameTask</td>
+  <td class="text-left">@Model.NameStatus</td>
+    <td class="text-left">@Model.NamePerson</td>
+    <td class="text-left">@Model.PlantingDate</td>
+    <td class="text-left">@Model.Quantity</td>
+
+
+    <td>
+        <a class="btn btn-sm btn-primary"
+           asp-action="Show"
+           asp-route-id="@Model.IdCrop">
+            Details
+        </a>
+    </td>
+
+    <td>
+        <a class="btn btn-sm btn-success"
+           hx-get="@Url.Action(nameof(CropController.Edit), new { id = Model.IdCrop })"
+           title="Edit">Edit</a>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-danger"
+                hx-confirm="Delete Crop?"
+                hx-delete="@Url.Action(nameof(CropController.Delete), new { id = Model.IdCrop })"
+                title="Delete">
+            Delete
+        </button>
+    </td>
+</tr>
+  

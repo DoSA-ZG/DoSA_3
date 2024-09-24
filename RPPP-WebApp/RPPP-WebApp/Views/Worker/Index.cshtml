@@ -1,0 +1,93 @@
+﻿@model WorkerViewModel
+
+
+@{
+    ViewBag.Title = "Worker";
+}
+
+<h2>Workers</h2>
+
+
+<a asp-action="Create">Add a new worker</a>
+
+<pager page-info="@Model.PagingInfo" page-action="Index" page-title="Enter page"
+       class="float-end">
+</pager>
+
+<table class="table table-sm table-striped table-hover">
+    <thead>
+        <tr>
+            @{
+                string[] names = { "Name", "Worker type", "Salary" };
+                for (int i = 1; i <= names.Length; i++)
+                {
+                    <th>
+                        <a asp-route-sort="@i"
+                           asp-route-page="@Model.PagingInfo.CurrentPage"
+                           asp-route-ascending="@(Model.PagingInfo.Sort == i ? !Model.PagingInfo.Ascending : true)">
+                            @names[i - 1]
+                        </a>
+                    </th>
+                }
+            }
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var worker in Model.Worker)
+        {
+            <partial name="Get" model="worker" />
+        }
+    </tbody>
+</table>
+
+<div class="row">
+    <!-- Botón de EXPORT PDF-->
+    <div class="col-sm-1 text-right mb-2">
+        <!-- Ajusta el ancho a la mitad del contenedor -->
+        <a class="btn btn-primary export-excel-btn"
+           asp-action="Worker_PDF"
+           asp-route-page="@ViewBag.Page"
+           asp-route-sort="@ViewBag.Sort"
+           asp-route-ascending="@ViewBag.Ascending"
+           target="_blank"
+           title="Export PDF">
+            PDF
+        </a>
+    </div>
+    <!-- Botón de EXPORT EXCEL-->
+    <div class="col-sm-1 text-right mb-2">
+        <!-- Ajusta el ancho a la mitad del contenedor -->
+        <a class="btn btn-primary export-excel-btn"
+           asp-action="Worker_Excel_Simple"
+           asp-route-page="@ViewBag.Page"
+           asp-route-sort="@ViewBag.Sort"
+           asp-route-ascending="@ViewBag.Ascending"
+           title="Export EXCEL">
+            EXCEL
+        </a>
+    </div>
+    <!-- Botón de IMPORT EXCEL-->
+    <div class="col-sm-1 text-right mb-2">
+        <form asp-action="ProcessImportedExcel_Worker" method="post" enctype="multipart/form-data">
+            <input type="file" name="importedFile" />
+            <button class="import-excel-btn" type="submit">Import SIMPLE EXCEL</button>
+        </form>
+    </div>
+</div>
+
+@section scripts {
+    <script src="~/js/pager.js" asp-append-version="true"></script>
+    <script src="~/lib/htmx/htmx.min.js" asp-append-version="true"></script>
+    <partial name="IncludeValidation" />
+
+    <script>
+        document.body.addEventListener("showMessage", function (evt) {
+            toastr[evt.detail.messageType](evt.detail.message);
+        })
+        document.body.addEventListener("htmx:responseError", function (evt) {
+            toastr["error"](evt.detail.error);
+        })
+    </script>
+}

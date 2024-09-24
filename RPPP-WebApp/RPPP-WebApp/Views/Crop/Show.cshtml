@@ -1,0 +1,113 @@
+﻿@model Crop2ViewModel
+@{
+    ViewBag.Title = "Crop #" + @Model.IdCrop;
+}
+
+<div class="container">
+    <div class="row text-center">
+
+        <div class="col-sm-8">
+            <h4>
+                Crop Nº @Model.IdCrop
+            </h4>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-2">
+            Specie Planted: @Model.NameSpecies
+        </div>
+        <div class="col-sm-2">
+            Task: @Model.NameTask
+        </div>
+        <div class="col-sm-2">
+            Status: @Model.NameStatus
+        </div>
+        <div class="col-sm-2">
+            Worker assigned: @Model.NamePerson
+        </div>
+        <div class="col-sm-2">
+            Planting Date: @Model.PlantingDate
+        </div>
+        <div class="col-sm-2">
+            Quantity: @Model.Quantity
+        </div>
+
+        <div class="row">
+            <!-- Boton de volver a atrás-->
+            <div class="col-sm-1 text-left">
+                <a class="btn btn-sm btn-secondary cancel"
+                   asp-action="Index"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Back to crop list">
+                    Back
+                </a>
+            </div>
+            <!-- Botón de EXPORT EXCEL-->
+            <div class="col-sm-1 text-right">
+                <a class="btn btn-sm btn-primary cancel"
+                   asp-action="Crops_Excel_Details"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Export excel">
+                    EXCEL
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @{
+                        string[] headers = { "ID Plot", "Owner", "Common Name", "Soil Quality", "Soil Category", "Infrastructure", "Size", "GPS Location" };
+                        for (int i = 0; i < headers.Length; i++)
+                        {
+                            <th class="text-center">
+                                @headers[i]
+                            </th>
+                        }
+                    }
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ItemsC)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @item.IdPlot
+                        </td>
+                        <td class="text-center">
+                            @item.NamePerson
+                        </td>
+                        <td class="text-center">
+                            @item.CommonName
+                        </td>
+                        <td class="text-center">
+                            @item.NameSoilQuality
+                        </td>
+                        <td class="text-center">
+                            @item.NameSoilCategory
+                        </td>
+                        <td class="text-center">
+                            @item.NameInfrastructure
+                        </td>
+                        <td class="text-center">
+                            @item.Size
+                        </td>
+                        <td class="text-center">
+                            @item.Gpslocation
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

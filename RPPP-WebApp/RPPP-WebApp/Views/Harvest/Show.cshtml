@@ -1,0 +1,100 @@
+﻿@model Harvest2ViewModel
+
+@{
+    ViewBag.Title = "Harvest #" + @Model.IdHarvest;
+}
+
+<div class="container">
+    <div class="row text-center">
+        <div>
+            <h4>
+                Harvest Nº @Model.IdHarvest
+            </h4>
+        </div>
+    </div>
+
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-2">
+            Crop: @Model.IdCrop
+        </div>
+        <div class="col-sm-2">
+            Quantity: @Model.Quantity
+        </div>
+        <div class="col-sm-2">
+            From: @Model.FromDate
+        </div>
+        <div class="col-sm-2">
+            To: @Model.ToDate
+        </div>
+        <div class="col-sm-2">
+            Worker: @Model.NamePerson
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <!-- Boton de volver a atrás-->
+        <div class="col-sm-1 text-left">
+            <a class="btn btn-sm btn-secondary cancel"
+               asp-action="Index"
+               asp-route-page="@ViewBag.Page"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-ascending="@ViewBag.Ascending"
+               title="Back to harvest list">
+                Back
+            </a>
+        </div>
+        <!-- Botón de EXPORT EXCEL-->
+        <div class="col-sm-1 text-right">
+            <a class="btn btn-sm btn-primary cancel"
+               asp-action="Harvests_Excel_Details"
+               asp-route-page="@ViewBag.Page"
+               asp-route-sort="@ViewBag.Sort"
+               asp-route-ascending="@ViewBag.Ascending"
+               title="Export excel">
+                EXCEL
+            </a>
+        </div>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @{
+                    string[] headers = { "ID Order", "Customer", "Quantity", "Price", "Date of Order" };
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        <th class="text-center">
+                            @headers[i]
+                        </th>
+                    }
+                }
+                <th></th>
+                <th></th> <!-- Agregado para los botones Edit y Delete -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.ItemsH)
+            {
+                <tr>
+                    <td class="text-center">
+                        @item.IdOrder
+                    </td>
+                    <td class="text-center">
+                        @item.NamePerson
+                    </td>
+                    <td class="text-center">
+                        @item.Quantity
+                    </td>
+                    <td class="text-center">
+                        @item.Price
+                    </td>
+                    <td class="text-center">
+                        @item.DateOfOrder
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

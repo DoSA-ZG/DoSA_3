@@ -1,0 +1,25 @@
+﻿@model Task2ViewModel
+
+<tr hx-target="this" hx-swap="outerHTML">
+    <td class="text-left">@Model.IdTask</td>
+    <td class="text-left">@Model.Task1</td>
+    <td class="text-left">@Model.Status</td>
+    <td class="text-left">@Model.NamePerson</td>
+    
+
+
+    <td>
+        <a class="btn btn-sm btn-success"
+           hx-get="@Url.Action(nameof(OrderController.Edit), new { id = Model.IdTask })"
+           title="Edit">Edit</a>
+    </td>
+    <td>
+        <button class="btn btn-sm btn-danger"
+                hx-confirm="Delete Task?"
+                hx-delete="@Url.Action(nameof(OrderController.Delete), new { id = Model.IdTask })"
+                title="Delete">
+            Delete
+        </button>
+    </td>
+</tr>
+  

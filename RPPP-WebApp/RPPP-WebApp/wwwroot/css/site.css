@@ -1,0 +1,93 @@
+﻿main {
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.logo-icon {
+    height: 30px;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #a94442;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border-color: red;
+}
+
+.pagebox {
+    width: 45px;
+}
+
+    .pagebox::selection {
+        background-color: grey;
+    }
+
+.thumbnail {
+    height: 40px;
+}
+
+.frame {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.Button_Home {
+    margin: 20px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5), 7px 7px 20px 0px rgba(0,0,0,.1), 4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+    background-color: #89d8d3;
+    background-image: linear-gradient(315deg, #89d8d3 0%, #03c8a8 74%);
+    border: none;
+    text-decoration: none;
+}
+
+    .Button_Home:hover {
+        background-color: #4dccc6;
+        background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%);
+    }
+
+/* Estilos para el botón "Import Simple EXCEL" */
+.import-excel-btn {
+    width: 180px; /* Ajusta el valor según tus necesidades */
+    height: 40px; /* Puedes ajustar la altura si es necesario */
+    background-color: #4B5F6C;
+    border: none;
+    color: #fff; /* Color del texto blanco */
+    border-radius: 5px; /* Esquinas redondeadas */
+    white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+    overflow: hidden; /* Oculta cualquier texto que desborde el ancho especificado */
+    text-overflow: ellipsis; /* Muestra puntos suspensivos (...) si el texto se recorta */
+}
+
+    .import-excel-btn:hover {
+        background-color: #0d6efd; /* Cambio de color al pasar el ratón */
+    }
+
+.export-excel-btn {
+    background-color: #4B5F6C;
+    color: #fff; /* Color del texto blanco */
+    border-radius: 5px; /* Esquinas redondeadas */
+    padding: 10px 20px; /* Ajusta el relleno según tus necesidades */
+}
+
+    .export-excel-btn:hover {
+        background-color: #0d6efd; /* Cambio de color al pasar el ratón */
+    }
+

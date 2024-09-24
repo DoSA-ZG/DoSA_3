@@ -1,0 +1,86 @@
+﻿@model Worker2ViewModel
+@{
+    ViewBag.Title = "Worker #" + @Model.IdPerson;
+}
+
+<div class="container">
+    <div class="row text-center">
+
+        <div class="col-sm-8">
+            <h4>
+                @Model.NamePerson 's tasks assigned
+            </h4>
+        </div>
+
+    </div>
+
+    <div class="row justify-content-sm-center">
+        <div class="col-sm-2">
+            Worker Type: @Model.NameWorkerType
+        </div>
+        <div class="col-sm-2">
+            Salary (€): @Model.Salary
+        </div>
+
+        <div class="row">
+            <!-- Boton de volver a atrás-->
+            <div class="col-sm-1 text-left">
+                <a class="btn btn-sm btn-secondary cancel"
+                   asp-action="Index"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Back to workers list">
+                    Back
+                </a>
+            </div>
+            <!-- Botón de EXPORT EXCEL-->
+            <div class="col-sm-1 text-right">
+                <a class="btn btn-sm btn-primary cancel"
+                   asp-action="Worker_Excel_Details"
+                   asp-route-page="@ViewBag.Page"
+                   asp-route-sort="@ViewBag.Sort"
+                   asp-route-ascending="@ViewBag.Ascending"
+                   title="Export excel">
+                    EXCEL
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @{
+                        string[] headers = { "ID Task", "Task", "Task Status" };
+                        for (int i = 0; i < headers.Length; i++)
+                        {
+                            <th class="text-center">
+                                @headers[i]
+                            </th>
+                        }
+                    }
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ItemsW)
+                {
+                    <tr>
+                        <td class="text-center">
+                            @item.IdTask
+                        </td>
+                        <td class="text-center">
+                            @item.Task1
+                        </td>
+                        <td class="text-center">
+                            @item.Status
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
